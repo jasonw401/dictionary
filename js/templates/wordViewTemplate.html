@@ -1,0 +1,34 @@
+<td>
+
+
+        <section class="row text-center" style="padding-right: 1em">
+          <div class="col-4 ">
+            <% console.log(text + " status = " + status); if(status == 2){ %>
+              <div class="circle-div" style="background-color: green"></div>
+            <% }else if(status == 1){%>
+              <div class="circle-div" style="background-color: orange"></div>
+            <% }else{%>
+              <div class="circle-div" style="background-color: red"></div>
+            <% }%>
+          </div>
+
+        </section>
+</td>
+<td><%- text%></td>
+<td>
+              <% _.each(meanings, function(meaning, idx) { %>
+                    
+                    <dd><%- meaning.classfication %>. &nbsp<%- meaning.explanation %>
+                    	&nbspSyn. [
+
+                      <%if(typeof meaning.synonyms != "undefined"){ 
+                        for(var i = 0; i < 5; i ++) { %>
+                        <%- meaning.synonyms[i] %>;&nbsp
+                      <% }} %>
+                      ]
+                    </dd>
+
+              <% }); %>
+</td>              
+
+

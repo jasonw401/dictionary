@@ -1,0 +1,79 @@
+
+
+<main role="main" class="container">
+
+    <div class="container-fluid">
+
+        <section class="row text-center placeholders">
+          <div class="col-sm-2 placeholder">
+            <section class="placeholders">
+              <a href="#" id="prev2"><img  src="img\ll.png" width="100" height="100" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail"></a>
+            </section>            
+          </div>
+          <div class="col-sm-8 placeholder">
+            <h1 style="font-size: 3em;" id="headText"><%- text %></h1>
+            <!-- <span class="text-muted"><%- id %></span> -->
+          </div>
+          <div class="col-sm-2 placeholder">
+            <div class="placeholders">
+              <a id="next2" href="#" ><img  src="img\rr.png" width="100" height="100" class="center-block rounded-circle" alt="Generic placeholder thumbnail"></a>
+            </div>            
+          </div>
+        </section>
+
+
+
+        <section class="row text-center placeholders">
+          <div class="col-sm-2 placeholder">
+
+            <section class="placeholders">
+              <a href="#" id="prev"><img  src="img\l.png" width="100" height="100" class="img-fluid rounded-circle" alt="Generic placeholder thumbnail"></a>
+            </section>
+
+
+          </div>
+
+          <div class="col-sm-8 placeholder">
+            <div id="defbody">
+              <% _.each(meanings, function(meaning, idx) { %>
+                <div class="text-left roundbox boxshadow">
+                  <dl>
+                    <dt><%- meaning.classfication %></dt>
+                    <dd><%- meaning.explanation %></dd>
+                    <dt class="text=muted">Syn.</dt>
+                    <dd>
+                      <%if(typeof meaning.synonyms != "undefined"){ 
+                        for(var i = 0; i < 5; i ++) { %>
+                        <%- meaning.synonyms[i] %>;&nbsp
+                      <% }} %>
+
+                    </dd>
+                    <dt class="text=muted">Examples</dt>
+                      <%if(typeof meaning.examples != "undefined"){  
+                        for(var i = 0; i < 3; i ++) { %>
+                        <dd><%- i + 1 %>:&nbsp<%- meaning.examples[i] %></dd>
+                      <% }}%>
+                  </dl>
+                </div>
+              <% }); %>
+            </div>
+          </div>
+          <div class="col-sm-2 text-center placeholder">
+            <div class="">
+                <div id="next-red" class="circle-div-100" style="background-color: red;margin-bottom: 5px; margin-left: 12.5px"></div>
+            </div>
+
+            <div class="">
+                <div id="next-orange" class="circle-div-100" style="background-color: orange;margin-bottom: 5px; margin-left: 12.5px"></div>
+            </div>
+
+              <div class="">
+                <div id="next-green" class="circle-div-100" style="background-color: green; margin-left: 12.5px"></div>
+            </div>
+
+          </div>
+        </section>
+
+    </div>
+
+</main><!-- /.container -->
