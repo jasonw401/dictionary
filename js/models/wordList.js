@@ -30,8 +30,8 @@ define(['backbone', 'store', 'models/word', 'models/dictionary'],
     },
 
     getIndexOfFirstLetter(curLetter){
-      for(var i = 0; i < this.keys.length; i++){
-        var nextLetter = this.keys[i].slice(0,1);
+      for(var i = 0; i < this.models.length; i++){
+        var nextLetter = this.models[i].attributes.text.slice(0,1);
         if(nextLetter == curLetter){
           return i;
         }
@@ -40,9 +40,9 @@ define(['backbone', 'store', 'models/word', 'models/dictionary'],
     },
 
     getIndexOfNextLetter(index){
-      var curLetter = this.keys[index].slice(0,1);
-      for(var i = index + 1; i < this.keys.length; i++){
-        var nextLetter = this.keys[i].slice(0,1);
+      var curLetter = this.models[index].attributes.text.slice(0,1);
+      for(var i = index + 1; i < this.models.length; i++){
+        var nextLetter = this.models[i].attributes.text.slice(0,1);
         if(nextLetter != curLetter){
           return i;
         }
@@ -51,9 +51,9 @@ define(['backbone', 'store', 'models/word', 'models/dictionary'],
     },
 
     getIndexOfPrevLetter(index){
-      var curLetter = this.keys[index].slice(0,1);
+      var curLetter = this.models[index].attributes.text.slice(0,1);
       for(var i = index + 1; i > 0; i--){
-        var nextLetter = this.keys[i].slice(0,1);
+        var nextLetter = this.models[i].attributes.text.slice(0,1);
         if(nextLetter != curLetter){
           return this.getIndexOfFirstLetter(nextLetter)
           //return i;
@@ -85,8 +85,8 @@ define(['backbone', 'store', 'models/word', 'models/dictionary'],
       var self = this;
       this.fetch({
             success: function(collection, response,options){
-              console.log('Collection fetch success', response);
-              console.log('Collection models: ', collection.models);
+              //console.log('Collection fetch success', response);
+              //console.log('Collection models: ', collection.models);
               if(response.length == 0){
                 
                 new Dictionary().fetch({

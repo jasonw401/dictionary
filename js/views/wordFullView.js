@@ -12,9 +12,13 @@ define(['underscore','backbone',
 
       template: _.template(wordFullViewTemplate),
 
-      render: function(){
-        var word = this.model.fetchByIndex(this.cur_index, 1, null, this.renderFullWord.bind(this));
-        //this.$el.html(this.template(word));
+      render: function(word){
+        if(typeof word == 'undefined'){
+          this.model.fetchByIndex(this.cur_index, 1, null, this.renderFullWord.bind(this));
+          //this.$el.html(this.template(word));          
+        }else{
+          this.renderFullWord(word);
+        }
 console.log('rendor home view...');
         return this; // enable chained calls
       },
@@ -55,7 +59,7 @@ console.log('rendor home view...');
         this.model.models[this.cur_index].attributes.status = status;
         this.model.models[this.cur_index].save({'status' : status});
 
-console.log('clicked ' + color + ' word: ' + JSON.stringify(this.model.models[this.cur_index].attributes));
+//console.log('clicked ' + color + ' word: ' + JSON.stringify(this.model.models[this.cur_index].attributes));
           this.cur_index ++;
           if(this.cur_index > this.model.models.length - 1)
             this.cur_index = this.model.models.length - 1;
@@ -79,16 +83,16 @@ console.log('clicked prev...');
       },
 
       showNextLetterGroup: function(e){
+
         e.preventDefault();
-console.log('clicked next2...');
           this.cur_index = this.model.getIndexOfNextLetter(this.cur_index);
 
-            this.render();
+          this.render();
       },
 
       showPrevLetterGroup: function(e){
         e.preventDefault();
-console.log('clicked prev2...');
+
           this.cur_index = this.model.getIndexOfPrevLetter(this.cur_index);
 
                     this.render();

@@ -22,6 +22,8 @@ define(['underscore','backbone', 'text!templates/topBarViewTemplate.html'],
         'click #listRed': 'showListFilter',
         'click #listOrange': 'showListFilter',
         'click #listGreen': 'showListFilter',
+        'click #upload': 'upload',
+        'click #searchBtn': 'search',
 
       },
 
@@ -48,6 +50,23 @@ console.log('clicked singleMode...');
         var color = e.currentTarget.id;
 console.log('clicked showListFilter...' + color);
           window.pa.router.navigate(color, true);
+
+      },
+
+      upload: function(e){
+        e.preventDefault();
+
+console.log('clicked upload...' );
+          window.pa.router.uploadStatus();
+
+      },
+
+      search: function(e){
+        e.preventDefault();
+
+        var target = $("#searchText").val().trim();
+
+        window.pa.router.search(target);
 
       },
     });
