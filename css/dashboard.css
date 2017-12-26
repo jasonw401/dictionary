@@ -55,8 +55,8 @@ h1 {
 
 /* Placeholders */
 .placeholders {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .placeholder {
@@ -94,8 +94,8 @@ h1 {
 
 .circle-div-100 {
 
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
     background-color: red;
     color: #B8BFC5;
